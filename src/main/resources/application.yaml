@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: issue-tracker
+  datasource:
+    url: jdbc:postgresql://localhost/issue_tracker
+    username: issue_tracker
+    password: issue_tracker
+  jpa:
+    hibernate:
+      ddl-auto: update
