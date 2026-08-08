@@ -2,3 +2,7 @@
     <input name="key">
     <button>Создать проект</button>
 </form>
+
+<ul>
+    <li th:each="project : ${projects}" th:text="${project.key}">
+</ul>
