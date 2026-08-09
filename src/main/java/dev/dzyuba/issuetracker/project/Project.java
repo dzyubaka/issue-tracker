@@ -24,6 +24,8 @@ public class Project {
 
     private String key;
 
+    private int lastIssueNumber;
+
     public Project(String key) {
         this.key = key;
     }

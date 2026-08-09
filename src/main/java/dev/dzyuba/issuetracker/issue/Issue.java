@@ -21,10 +21,13 @@ public class Issue {
     @JoinColumn(name = "project_id")
     private Project project;
 
+    private Integer number;
+
     private String summary;
 
-    public Issue(Project project, String summary) {
+    public Issue(Project project, Integer number, String summary) {
         this.project = project;
+        this.number = number;
         this.summary = summary;
     }
 
