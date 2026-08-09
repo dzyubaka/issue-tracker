@@ -4,5 +4,7 @@
 </form>
 
 <ul>
-    <li th:each="project : ${projects}" th:text="${project.key}">
+    <li th:each="project : ${projects}">
+        <a th:text="${project.key}" th:href="|/projects/${project.key}|"></a>
+    </li>
 </ul>
