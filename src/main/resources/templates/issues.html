@@ -4,5 +4,5 @@
 </form>
 
 <ul>
-    <li th:each="issue : ${issues}" th:text="${issue.summary}">
+    <li th:each="issue : ${issues}" th:text="|${projectKey}-${issue.number} ${issue.summary}|">
 </ul>

@@ -32,7 +32,10 @@ public class IssueController {
     @PostMapping
     public String create(@PathVariable String projectKey, String issue) {
         Project project = projectRepository.findByKey(projectKey);
-        issueRepository.save(new Issue(project, issue));
+        int number = project.getLastIssueNumber() + 1;
+        issueRepository.save(new Issue(project, number, issue));
+        project.setLastIssueNumber(number);
+        projectRepository.save(project);
         return "redirect:";
     }
 
