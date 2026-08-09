@@ -4,13 +4,16 @@ import dev.dzyuba.issuetracker.project.Project;
 import dev.dzyuba.issuetracker.project.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/projects/{key}/issues")
+@RequestMapping("/projects/{projectKey}/issues")
 @RequiredArgsConstructor
 public class IssueController {
 
@@ -19,13 +22,16 @@ public class IssueController {
     private final IssueRepository issueRepository;
 
     @GetMapping
-    public String list() {
+    public String list(@PathVariable String projectKey, Model model) {
+        Project project = projectRepository.findByKey(projectKey);
+        List<Issue> issues = issueRepository.findByProject(project);
+        model.addAttribute("issues", issues);
         return "issues";
     }
 
     @PostMapping
-    public String create(@PathVariable String key, String issue) {
-        Project project = projectRepository.findByKey(key);
+    public String create(@PathVariable String projectKey, String issue) {
+        Project project = projectRepository.findByKey(projectKey);
         issueRepository.save(new Issue(project, issue));
         return "redirect:";
     }

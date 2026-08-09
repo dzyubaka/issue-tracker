@@ -2,3 +2,7 @@
     <input name="issue">
     <button>Создать задачу</button>
 </form>
+
+<ul>
+    <li th:each="issue : ${issues}" th:text="${issue.summary}">
+</ul>
