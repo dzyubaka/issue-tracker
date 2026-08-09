@@ -25,10 +25,13 @@ public class Issue {
 
     private String summary;
 
-    public Issue(Project project, Integer number, String summary) {
+    private IssueStatus status;
+
+    public Issue(Project project, Integer number, String summary, IssueStatus status) {
         this.project = project;
         this.number = number;
         this.summary = summary;
+        this.status = status;
     }
 
 }

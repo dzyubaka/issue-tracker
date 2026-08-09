@@ -3,6 +3,17 @@
     <button>Создать задачу</button>
 </form>
 
-<ul>
-    <li th:each="issue : ${issues}" th:text="|${projectKey}-${issue.number} ${issue.summary}|">
-</ul>
+<table>
+    <thead>
+    <tr>
+        <th>Задачи</th>
+        <th>Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="issue : ${issues}">
+        <td th:text="|${projectKey}-${issue.number} ${issue.summary}|">
+        <td th:text="${issue.status.displayName}">
+    </tr>
+    </tbody>
+</table>
