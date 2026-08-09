@@ -33,7 +33,7 @@ public class IssueController {
     public String create(@PathVariable String projectKey, String issue) {
         Project project = projectRepository.findByKey(projectKey);
         int number = project.getLastIssueNumber() + 1;
-        issueRepository.save(new Issue(project, number, issue));
+        issueRepository.save(new Issue(project, number, issue, IssueStatus.TO_DO));
         project.setLastIssueNumber(number);
         projectRepository.save(project);
         return "redirect:";
