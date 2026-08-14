@@ -1,1 +1,10 @@
-<p th:text="|${issue.key} ${issue.summary} ${issue.status.displayName}|"></p>
+<form method="post">
+    <span th:text="|${issue.key} ${issue.summary}|"></span>
+    <select name="status">
+        <option th:each="status : ${statuses}"
+                th:value="${status}"
+                th:text="${status.displayName}"
+                th:selected="${status == issue.status}">
+    </select>
+    <button>Сохранить</button>
+</form>

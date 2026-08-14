@@ -34,4 +34,10 @@ public class IssueService {
         projectRepository.save(project);
     }
 
+    public void update(String issueKey, IssueStatus status) {
+        Issue issue = find(issueKey);
+        issue.setStatus(status);
+        issueRepository.save(issue);
+    }
+
 }
