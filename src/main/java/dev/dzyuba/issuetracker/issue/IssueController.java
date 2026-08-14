@@ -41,7 +41,7 @@ public class IssueController {
     @PostMapping("/{issueKey}")
     public String update(@PathVariable String projectKey, @PathVariable String issueKey, IssueStatus status) {
         issueService.update(issueKey, status);
-        return "redirect:/projects/" + projectKey + "/issues/" + issueKey;
+        return "redirect:/projects/" + projectKey;
     }
 
 }
