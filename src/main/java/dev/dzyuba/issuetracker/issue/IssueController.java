@@ -1,7 +1,5 @@
 package dev.dzyuba.issuetracker.issue;
 
-import dev.dzyuba.issuetracker.project.Project;
-import dev.dzyuba.issuetracker.project.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,25 +15,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IssueController {
 
-    private final ProjectRepository projectRepository;
-
-    private final IssueRepository issueRepository;
+    private final IssueService issueService;
 
     @GetMapping
     public String list(@PathVariable String projectKey, Model model) {
-        Project project = projectRepository.findByKey(projectKey);
-        List<Issue> issues = issueRepository.findByProject(project);
+        List<Issue> issues = issueService.list(projectKey);
         model.addAttribute("issues", issues);
         return "issues";
     }
 
     @PostMapping
     public String create(@PathVariable String projectKey, String issue) {
-        Project project = projectRepository.findByKey(projectKey);
-        int number = project.getLastIssueNumber() + 1;
-        issueRepository.save(new Issue(project, number, issue, IssueStatus.TO_DO));
-        project.setLastIssueNumber(number);
-        projectRepository.save(project);
+        issueService.create(projectKey, issue);
         return "redirect:";
     }
 
