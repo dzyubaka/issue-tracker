@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface IssueRepository extends CrudRepository<Issue, Long> {
 
-    List<Issue> findByProject(Project project);
+    List<Issue> findByProjectOrderByNumberDesc(Project project);
 
 }

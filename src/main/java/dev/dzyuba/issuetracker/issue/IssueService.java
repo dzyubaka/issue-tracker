@@ -17,7 +17,7 @@ public class IssueService {
 
     public List<Issue> list(String projectKey) {
         Project project = projectRepository.findByKey(projectKey);
-        return issueRepository.findByProject(project);
+        return issueRepository.findByProjectOrderByNumberDesc(project);
     }
 
     public void create(String projectKey, String issue) {
