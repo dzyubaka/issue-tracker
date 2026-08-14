@@ -27,6 +27,10 @@ public class Issue {
 
     private IssueStatus status;
 
+    public String getKey() {
+        return project.getKey() + '-' + number;
+    }
+
     public Issue(Project project, Integer number, String summary, IssueStatus status) {
         this.project = project;
         this.number = number;

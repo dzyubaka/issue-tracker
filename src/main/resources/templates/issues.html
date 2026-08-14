@@ -12,7 +12,10 @@
     </thead>
     <tbody>
     <tr th:each="issue : ${issues}">
-        <td th:text="|${projectKey}-${issue.number} ${issue.summary}|">
+        <td>
+            <a th:text="${issue.key}" th:href="|/projects/${projectKey}/issues/${issue.key}|"></a>
+            <span th:text="${issue.summary}"></span>
+        </td>
         <td th:text="${issue.status.displayName}">
     </tr>
     </tbody>

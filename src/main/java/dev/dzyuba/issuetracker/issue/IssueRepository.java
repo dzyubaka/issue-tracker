@@ -11,4 +11,6 @@ public interface IssueRepository extends CrudRepository<Issue, Long> {
 
     List<Issue> findByProjectOrderByNumberDesc(Project project);
 
+    Issue findByProjectAndNumber(Project project, int number);
+
 }

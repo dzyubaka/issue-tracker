@@ -20,6 +20,12 @@ public class IssueService {
         return issueRepository.findByProjectOrderByNumberDesc(project);
     }
 
+    public Issue find(String issueKey) {
+        String[] projectAndNumber = issueKey.split("-");
+        Project project = projectRepository.findByKey(projectAndNumber[0]);
+        return issueRepository.findByProjectAndNumber(project, Integer.parseInt(projectAndNumber[1]));
+    }
+
     public void create(String projectKey, String issue) {
         Project project = projectRepository.findByKey(projectKey);
         int number = project.getLastIssueNumber() + 1;
