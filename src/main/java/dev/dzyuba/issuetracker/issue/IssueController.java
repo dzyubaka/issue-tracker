@@ -24,6 +24,13 @@ public class IssueController {
         return "issues";
     }
 
+    @GetMapping("/{issueKey}")
+    public String view(@PathVariable String issueKey, Model model) {
+        Issue issue = issueService.find(issueKey);
+        model.addAttribute("issue", issue);
+        return "issue";
+    }
+
     @PostMapping
     public String create(@PathVariable String projectKey, String issue) {
         issueService.create(projectKey, issue);
