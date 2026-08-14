@@ -28,6 +28,7 @@ public class IssueController {
     public String view(@PathVariable String issueKey, Model model) {
         Issue issue = issueService.find(issueKey);
         model.addAttribute("issue", issue);
+        model.addAttribute("statuses", IssueStatus.values());
         return "issue";
     }
 
@@ -35,6 +36,12 @@ public class IssueController {
     public String create(@PathVariable String projectKey, String issue) {
         issueService.create(projectKey, issue);
         return "redirect:";
+    }
+
+    @PostMapping("/{issueKey}")
+    public String update(@PathVariable String projectKey, @PathVariable String issueKey, IssueStatus status) {
+        issueService.update(issueKey, status);
+        return "redirect:/projects/" + projectKey + "/issues/" + issueKey;
     }
 
 }
