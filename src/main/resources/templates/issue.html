@@ -1,5 +1,6 @@
 <form method="post">
-    <span th:text="|${issue.key} ${issue.summary}|"></span>
+    <span th:text="${issue.key}"></span>
+    <input name="summary" th:value="${issue.summary}" style="field-sizing: content">
     <select name="status">
         <option th:each="status : ${statuses}"
                 th:value="${status}"
