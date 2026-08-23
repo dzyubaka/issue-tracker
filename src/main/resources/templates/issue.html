@@ -1,6 +1,6 @@
 <a th:href="|/projects/${issue.project.key}/issues|">Назад</a>
 
-<form method="post" style="display: flex">
+<form method="post" autocomplete="off" style="display: flex">
     <span th:text="${issue.key}"></span>
     <input name="summary" th:value="${issue.summary}" style="flex: 1">
     <select name="status">
