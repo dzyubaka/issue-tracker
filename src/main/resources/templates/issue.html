@@ -1,8 +1,8 @@
 <a th:href="|/projects/${issue.project.key}/issues|">Назад</a>
 
-<form method="post">
+<form method="post" style="display: flex">
     <span th:text="${issue.key}"></span>
-    <input name="summary" th:value="${issue.summary}" style="field-sizing: content">
+    <input name="summary" th:value="${issue.summary}" style="flex: 1">
     <select name="status">
         <option th:each="status : ${statuses}"
                 th:value="${status}"
