@@ -3,7 +3,7 @@
 <form method="post" autocomplete="off">
     <div style="display: flex">
         <label for="summary" th:text="${issue.key}"></label>
-        <input name="summary" id="summary" th:value="${issue.summary}" style="flex: 1">
+        <input name="summary" id="summary" th:value="${issue.summary}" placeholder="Тема" style="flex: 1">
         <select name="status">
             <option th:each="status : ${statuses}"
                     th:value="${status}"
@@ -12,5 +12,5 @@
         </select>
         <button>Сохранить</button>
     </div>
-    <textarea name="description" th:text="${issue.description}" style="width: 100%"></textarea>
+    <textarea name="description" th:text="${issue.description}" placeholder="Описание" style="width: 100%"></textarea>
 </form>
