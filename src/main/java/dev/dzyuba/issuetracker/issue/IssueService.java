@@ -26,10 +26,10 @@ public class IssueService {
         return issueRepository.findByProjectAndNumber(project, Integer.parseInt(projectAndNumber[1]));
     }
 
-    public void create(String projectKey, String issue) {
+    public void create(String projectKey, String summary, String description) {
         Project project = projectRepository.findByKey(projectKey);
         int number = project.getLastIssueNumber() + 1;
-        issueRepository.save(new Issue(project, number, issue, IssueStatus.TO_DO));
+        issueRepository.save(new Issue(project, number, summary, description, IssueStatus.TO_DO));
         project.setLastIssueNumber(number);
         projectRepository.save(project);
     }
@@ -37,6 +37,7 @@ public class IssueService {
     public void update(String issueKey, Issue issue) {
         Issue oldIssue = find(issueKey);
         oldIssue.setSummary(issue.getSummary());
+        oldIssue.setDescription(issue.getDescription());
         oldIssue.setStatus(issue.getStatus());
         issueRepository.save(oldIssue);
     }

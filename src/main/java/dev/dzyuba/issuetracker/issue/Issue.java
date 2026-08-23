@@ -25,16 +25,19 @@ public class Issue {
 
     private String summary;
 
+    private String description;
+
     private IssueStatus status;
 
     public String getKey() {
         return project.getKey() + '-' + number;
     }
 
-    public Issue(Project project, Integer number, String summary, IssueStatus status) {
+    public Issue(Project project, Integer number, String summary, String description, IssueStatus status) {
         this.project = project;
         this.number = number;
         this.summary = summary;
+        this.description = description;
         this.status = status;
     }
 
