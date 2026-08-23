@@ -24,10 +24,13 @@ public class Project {
 
     private String key;
 
+    private String name;
+
     private int lastIssueNumber;
 
-    public Project(String key) {
+    public Project(String key, String name) {
         this.key = key;
+        this.name = name;
     }
 
 }
