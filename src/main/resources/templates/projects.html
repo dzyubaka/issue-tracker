@@ -1,10 +1,15 @@
 <form method="post">
-    <input name="key">
+    <label for="key">Ключ</label>
+    <input name="key" id="key">
+    <br>
+    <label for="name">Название</label>
+    <input name="name" id="name">
+    <br>
     <button>Создать проект</button>
 </form>
 
 <ul>
     <li th:each="project : ${projects}">
-        <a th:text="${project.key}" th:href="|/projects/${project.key}|"></a>
+        <a th:text="${project.name}" th:href="|/projects/${project.key}|"></a>
     </li>
 </ul>
