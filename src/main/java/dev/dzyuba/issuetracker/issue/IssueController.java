@@ -35,7 +35,7 @@ public class IssueController {
     @PostMapping
     public String create(@PathVariable String projectKey, String summary, String description) {
         issueService.create(projectKey, summary, description);
-        return "redirect:";
+        return "redirect:/projects/" + projectKey;
     }
 
     @PostMapping("/{issueKey}")
