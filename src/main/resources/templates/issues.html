@@ -6,15 +6,7 @@
 
 <a href="/projects">Назад</a>
 
-<form method="post" autocomplete="off">
-    <label for="summary">Тема</label>
-    <input name="summary" id="summary" placeholder="Тема">
-    <br>
-    <label for="description">Описание</label>
-    <textarea name="description" id="description" placeholder="Описание"></textarea>
-    <br>
-    <button>Создать задачу</button>
-</form>
+<a th:href="|/projects/${projectKey}/issues/new|">Создать задачу</a>
 
 <table style="border-collapse: collapse">
     <thead>

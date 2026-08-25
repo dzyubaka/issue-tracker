@@ -1,5 +1,6 @@
 package dev.dzyuba.issuetracker.issue;
 
+import dev.dzyuba.issuetracker.project.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,14 @@ public class IssueController {
         return "issues";
     }
 
+    @GetMapping("/new")
+    public String create(@PathVariable String projectKey, Model model) {
+        Project project = issueService.findProjectByKey(projectKey);
+        model.addAttribute("issue", new Issue(project));
+        model.addAttribute("statuses", IssueStatus.values());
+        return "issue";
+    }
+
     @GetMapping("/{issueKey}")
     public String view(@PathVariable String issueKey, Model model) {
         Issue issue = issueService.find(issueKey);
@@ -33,8 +42,8 @@ public class IssueController {
     }
 
     @PostMapping
-    public String create(@PathVariable String projectKey, String summary, String description) {
-        issueService.create(projectKey, summary, description);
+    public String create(@PathVariable String projectKey, Issue issue) {
+        issueService.create(projectKey, issue);
         return "redirect:/projects/" + projectKey;
     }
 

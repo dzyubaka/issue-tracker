@@ -33,12 +33,8 @@ public class Issue {
         return project.getKey() + '-' + number;
     }
 
-    public Issue(Project project, Integer number, String summary, String description, IssueStatus status) {
+    public Issue(Project project) {
         this.project = project;
-        this.number = number;
-        this.summary = summary;
-        this.description = description;
-        this.status = status;
     }
 
 }
