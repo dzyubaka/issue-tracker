@@ -16,20 +16,22 @@ public class IssueService {
     private final ProjectRepository projectRepository;
 
     public List<Issue> list(String projectKey) {
-        Project project = projectRepository.findByKey(projectKey);
+        Project project = findProjectByKey(projectKey);
         return issueRepository.findByProjectOrderByNumberDesc(project);
     }
 
     public Issue find(String issueKey) {
         String[] projectAndNumber = issueKey.split("-");
-        Project project = projectRepository.findByKey(projectAndNumber[0]);
+        Project project = findProjectByKey(projectAndNumber[0]);
         return issueRepository.findByProjectAndNumber(project, Integer.parseInt(projectAndNumber[1]));
     }
 
-    public void create(String projectKey, String summary, String description) {
-        Project project = projectRepository.findByKey(projectKey);
+    public void create(String projectKey, Issue issue) {
+        Project project = findProjectByKey(projectKey);
         int number = project.getLastIssueNumber() + 1;
-        issueRepository.save(new Issue(project, number, summary, description, IssueStatus.TO_DO));
+        issue.setProject(project);
+        issue.setNumber(number);
+        issueRepository.save(issue);
         project.setLastIssueNumber(number);
         projectRepository.save(project);
     }
@@ -40,6 +42,10 @@ public class IssueService {
         oldIssue.setDescription(issue.getDescription());
         oldIssue.setStatus(issue.getStatus());
         issueRepository.save(oldIssue);
+    }
+
+    public Project findProjectByKey(String projectKey) {
+        return projectRepository.findByKey(projectKey);
     }
 
 }

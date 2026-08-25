@@ -1,8 +1,8 @@
 <a th:href="|/projects/${issue.project.key}/issues|">Назад</a>
 
-<form method="post" autocomplete="off">
+<form th:action="${'/projects/' + issue.project.key + '/issues' + (issue.number == null ? '' : '/' + issue.key)}" method="post" autocomplete="off">
     <div style="display: flex">
-        <label for="summary" th:text="${issue.key}"></label>
+        <label for="summary" th:if="${issue.number}" th:text="${issue.key}"></label>
         <input name="summary" id="summary" th:value="${issue.summary}" placeholder="Тема" style="flex: 1">
         <select name="status">
             <option th:each="status : ${statuses}"
