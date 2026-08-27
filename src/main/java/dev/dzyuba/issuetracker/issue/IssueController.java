@@ -20,7 +20,9 @@ public class IssueController {
 
     @GetMapping
     public String list(@PathVariable String projectKey, Model model) {
-        List<Issue> issues = issueService.list(projectKey);
+        Project project = issueService.findProjectByKey(projectKey);
+        List<Issue> issues = issueService.list(project);
+        model.addAttribute("project", project);
         model.addAttribute("issues", issues);
         return "issues";
     }

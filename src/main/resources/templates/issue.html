@@ -1,16 +1,19 @@
-<a th:href="|/projects/${issue.project.key}/issues|">Назад</a>
+<link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
 
-<form th:action="${'/projects/' + issue.project.key + '/issues' + (issue.number == null ? '' : '/' + issue.key)}" method="post" autocomplete="off">
+<a th:href="|/projects/${issue.project.key}/issues|" class="btn btn-primary">Назад</a>
+
+<form th:action="${'/projects/' + issue.project.key + '/issues' + (issue.number == null ? '' : '/' + issue.key)}"
+      method="post" autocomplete="off" class="form-group">
     <div style="display: flex">
-        <label for="summary" th:if="${issue.number}" th:text="${issue.key}"></label>
-        <input name="summary" id="summary" th:value="${issue.summary}" placeholder="Тема" style="flex: 1">
-        <select name="status">
+        <h1><label for="summary" th:if="${issue.number}" th:text="${issue.key}"></label></h1>
+        <input name="summary" id="summary" th:value="${issue.summary}" placeholder="Тема" class="form-control">
+        <select name="status" class="form-select w-auto">
             <option th:each="status : ${statuses}"
                     th:value="${status}"
                     th:text="${status.displayName}"
                     th:selected="${status == issue.status}">
         </select>
-        <button>Сохранить</button>
+        <button class="btn btn-primary">Сохранить</button>
     </div>
-    <textarea name="description" th:text="${issue.description}" placeholder="Описание" style="width: 100%"></textarea>
+    <textarea name="description" th:text="${issue.description}" placeholder="Описание" class="form-control"></textarea>
 </form>
