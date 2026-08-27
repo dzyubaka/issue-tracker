@@ -1,11 +1,13 @@
-<a href="/projects">Назад</a>
+<link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
 
-<form action="/projects" method="post" autocomplete="off">
+<a href="/projects" class="btn btn-primary">Назад</a>
+
+<h1>Создать проект</h1>
+
+<form action="/projects" method="post" autocomplete="off" class="form-group">
     <label for="key">Ключ</label>
-    <input name="key" id="key" placeholder="Ключ">
-    <br>
+    <input name="key" id="key" placeholder="Ключ" class="form-control">
     <label for="name">Название</label>
-    <input name="name" id="name" placeholder="Название">
-    <br>
-    <button>Создать проект</button>
+    <input name="name" id="name" placeholder="Название" class="form-control">
+    <button class="btn btn-primary">Создать проект</button>
 </form>

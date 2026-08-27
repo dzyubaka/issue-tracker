@@ -1,14 +1,12 @@
-<style>
-    th, td {
-        border: 1px solid black;
-    }
-</style>
+<link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
 
-<a href="/projects">Назад</a>
+<a href="/projects" class="btn btn-primary">Назад</a>
 
-<a th:href="|/projects/${projectKey}/issues/new|">Создать задачу</a>
+<h1 th:text="|Задачи проекта ${project.name}|"></h1>
 
-<table style="border-collapse: collapse">
+<a th:href="|/projects/${projectKey}/issues/new|" class="btn btn-primary">Создать задачу</a>
+
+<table class="table">
     <thead>
     <tr>
         <th>Задачи</th>
