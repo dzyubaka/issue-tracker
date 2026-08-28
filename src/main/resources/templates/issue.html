@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
+</head>
+<body>
 <a th:href="|/projects/${issue.project.key}/issues|" class="btn btn-primary">Назад</a>
 
 <form th:action="${'/projects/' + issue.project.key + '/issues' + (issue.number == null ? '' : '/' + issue.key)}"
@@ -17,3 +22,5 @@
     </div>
     <textarea name="description" th:text="${issue.description}" placeholder="Описание" class="form-control"></textarea>
 </form>
+</body>
+</html>
