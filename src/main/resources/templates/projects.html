@@ -1,5 +1,10 @@
-<link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
-
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
+</head>
+<body>
 <h1>Проекты</h1>
 
 <a href="/projects/new" class="btn btn-primary">Создать проект</a>
@@ -9,3 +14,5 @@
         <a th:text="${project.name}" th:href="|/projects/${project.key}|"></a>
     </li>
 </ul>
+</body>
+</html>
