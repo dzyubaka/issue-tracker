@@ -10,7 +10,7 @@
 
 <form th:action="${'/projects/' + issue.project.key + '/issues' + (issue.number == null ? '' : '/' + issue.key)}"
       method="post" autocomplete="off" class="form-group">
-    <div style="display: flex">
+    <div class="d-flex">
         <h1><label for="summary" th:if="${issue.number}" th:text="${issue.key}"></label></h1>
         <input name="summary" id="summary" th:value="${issue.summary}" placeholder="Тема" class="form-control">
         <select name="status" class="form-select w-auto">
