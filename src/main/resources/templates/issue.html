@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <title th:text="${issue.number == null ? 'Создать задачу' : issue.key + ' ' + issue.summary}"></title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
 </head>
 <body class="m-3">
