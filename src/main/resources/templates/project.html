@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Создать проект</title>
@@ -10,7 +10,7 @@
 
 <h1>Создать проект</h1>
 
-<form action="/projects" method="post" autocomplete="off" class="form-group">
+<form th:action="@{/projects}" method="post" autocomplete="off" class="form-group">
     <label for="key">Ключ</label>
     <input name="key" id="key" placeholder="Ключ" class="form-control">
     <label for="name">Название</label>
