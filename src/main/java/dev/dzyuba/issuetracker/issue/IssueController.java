@@ -32,6 +32,7 @@ public class IssueController {
         Project project = issueService.findProjectByKey(projectKey);
         model.addAttribute("issue", new Issue(project));
         model.addAttribute("statuses", IssueStatus.values());
+        model.addAttribute("types", IssueType.values());
         return "issue";
     }
 
@@ -40,6 +41,7 @@ public class IssueController {
         Issue issue = issueService.find(issueKey);
         model.addAttribute("issue", issue);
         model.addAttribute("statuses", IssueStatus.values());
+        model.addAttribute("types", IssueType.values());
         return "issue";
     }
 

@@ -29,6 +29,8 @@ public class Issue {
 
     private IssueStatus status;
 
+    private IssueType type;
+
     public String getKey() {
         return project.getKey() + '-' + number;
     }
