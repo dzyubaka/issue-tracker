@@ -40,6 +40,7 @@ public class IssueService {
         oldIssue.setSummary(issue.getSummary());
         oldIssue.setDescription(issue.getDescription());
         oldIssue.setStatus(issue.getStatus());
+        oldIssue.setType(issue.getType());
         issueRepository.save(oldIssue);
     }
 

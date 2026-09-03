@@ -12,6 +12,12 @@
       method="post" autocomplete="off" class="form-group">
     <div class="d-flex">
         <h1><label for="summary" th:if="${issue.number}" th:text="${issue.key}"></label></h1>
+        <select name="type" class="form-select w-auto">
+            <option th:each="type : ${types}"
+                    th:value="${type}"
+                    th:text="${type.displayName}"
+                    th:selected="${type == issue.type}">
+        </select>
         <input name="summary" id="summary" th:value="${issue.summary}" placeholder="Тема" class="form-control">
         <select name="status" class="form-select w-auto">
             <option th:each="status : ${statuses}"
