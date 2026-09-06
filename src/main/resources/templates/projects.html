@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:data-bs-theme="${session.theme}">
 <head>
     <meta charset="UTF-8">
     <title>Проекты</title>
@@ -8,7 +8,10 @@
 <body class="m-3">
 <div class="d-flex justify-content-between align-items-center">
     <h1>Проекты</h1>
-    <a href="/projects/new" class="btn btn-primary">Создать проект</a>
+    <div>
+        <a href="/projects/theme" class="btn btn-secondary">Переключить тему</a>
+        <a href="/projects/new" class="btn btn-primary">Создать проект</a>
+    </div>
 </div>
 
 <ul class="list-group">

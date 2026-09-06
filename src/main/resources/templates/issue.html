@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:data-bs-theme="${session.theme}">
 <head>
     <meta charset="UTF-8">
     <title th:text="${issue.number == null ? 'Создать задачу' : issue.key + ' ' + issue.summary}"></title>

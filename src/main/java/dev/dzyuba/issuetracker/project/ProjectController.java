@@ -1,5 +1,6 @@
 package dev.dzyuba.issuetracker.project;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +36,13 @@ public class ProjectController {
     public String create(String key, String name) {
         projectRepository.save(new Project(key, name));
         return "redirect:";
+    }
+
+    @GetMapping("/theme")
+    public String theme(HttpSession session) {
+        String theme = (String) session.getAttribute("theme");
+        session.setAttribute("theme", "dark".equals(theme) ? "light" : "dark");
+        return "redirect:/projects";
     }
 
 }
